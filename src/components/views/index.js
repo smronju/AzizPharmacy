@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Container, Content } from 'native-base';
 import HeaderContent from '../controllers/HeaderContent';
 import TabContent from '../controllers/TabContent';
 import FabActions from '../controllers/Fab';
-import { Container, Content } from 'native-base';
 
-class AppContainer extends Component {
-  render() {
-    return (
-      <Container>
-        <HeaderContent />
+const AppContainer = () => {
+  return (
+    <Container>
+      <HeaderContent />
 
-        <Content>
-          <TabContent />
-        </Content>
+      <Content>
+        <TabContent />
+      </Content>
 
-        <FabActions />
-      </Container>
-    );
-  }
-}
+      <FabActions />
+    </Container>
+  );
+};
 
 export default AppContainer;

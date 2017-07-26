@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ItemList from '../Utilities/ItemList';
 import { List } from 'native-base';
+import ItemList from '../Utilities/ItemList';
 
-class InStock extends Component {
-  render () {
-    const { handlePress, handleLongPress } = this.props;
-
-    return (
-      <List
-        dataArray={ this.props.stock }
-        renderRow={ (stock) => <ItemList medicine={ stock } handlePress={ handlePress } handleLongPress={ handleLongPress } /> }>
-      </List>
-    );
-  }
-}
+const InStock = ({ stock, handlePress, handleLongPress }) => {
+  return (
+    <List
+      dataArray={stock}
+      renderRow={stock => { return <ItemList medicine={stock} handlePress={handlePress} handleLongPress={handleLongPress} />; }}
+    />
+  );
+};
 
 InStock.propTypes = {
-  stock: PropTypes.array.isRequired
-}
+  stock: PropTypes.array.isRequired,
+  handlePress: PropTypes.func.isRequired,
+  handleLongPress: PropTypes.func.isRequired
+};
 
 export default InStock;

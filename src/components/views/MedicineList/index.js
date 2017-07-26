@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ItemList from '../Utilities/ItemList';
 import { List } from 'native-base';
+import ItemList from '../Utilities/ItemList';
 
-class MedicineList extends Component {
-  render () {
-    const { handlePress, handleLongPress } = this.props;
-
-    return (
-      <List
-        dataArray={ this.props.medicines }
-        renderRow={ (medicine) => <ItemList medicine={medicine} handlePress={ handlePress } handleLongPress={ handleLongPress } /> }>
-      </List>
-    );
-  }
-}
+const MedicineList = ({ medicines, handlePress, handleLongPress }) => {
+  return (
+    <List
+      dataArray={medicines}
+      renderRow={medicine => { return <ItemList medicine={medicine} handlePress={handlePress} handleLongPress={handleLongPress} />; }}
+    />
+  );
+};
 
 MedicineList.propTypes = {
-  medicines: PropTypes.array.isRequired
-}
+  medicines: PropTypes.array.isRequired,
+  handlePress: PropTypes.func.isRequired,
+  handleLongPress: PropTypes.func.isRequired
+};
 
 export default MedicineList;

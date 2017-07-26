@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ItemList from '../Utilities/ItemList';
 import { List } from 'native-base';
+import ItemList from '../Utilities/ItemList';
 
-class OutOfStock extends Component {
-  renderRow (outOfStock) {
-    return <ItemList medicine={ outOfStock } />;
-  }
-
-  render () {
-    const { handlePress, handleLongPress } = this.props;
-
-    return (
-      <List
-        dataArray={ this.props.outOfStock }
-        renderRow={ (outOfStock) => <ItemList medicine={ outOfStock } handlePress={ handlePress } handleLongPress={ handleLongPress } /> }>
-      </List>
-    );
-  }
-}
+const OutOfStock = ({ outOfStock, handlePress, handleLongPress }) => {
+  return (
+    <List
+      dataArray={outOfStock}
+      renderRow={outOfStock => { return <ItemList medicine={outOfStock} handlePress={handlePress} handleLongPress={handleLongPress} />; }}
+    />
+  );
+};
 
 OutOfStock.propTypes = {
-  outOfStock: PropTypes.array.isRequired
-}
+  outOfStock: PropTypes.array.isRequired,
+  handlePress: PropTypes.func.isRequired,
+  handleLongPress: PropTypes.func.isRequired
+};
 
 export default OutOfStock;

@@ -16,13 +16,13 @@ class HeaderContent extends Component {
           <Item>
             <Icon name="search" />
             <Input placeholder="Search" />
-            <Button transparent onPress={ this.handleTap }><Icon name="close" /></Button>
+            <Button transparent onPress={this.handleTap}><Icon name="close" /></Button>
           </Item>
           <Button transparent>
             <Text>Search</Text>
           </Button>
         </Header>
-      )
+      );
     }
 
     return (
@@ -34,7 +34,7 @@ class HeaderContent extends Component {
         </Body>
 
         <Right>
-          <Button transparent onPress={ this.handleTap }  >
+          <Button transparent onPress={this.handleTap}>
             <Icon name="search" />
           </Button>
         </Right>
@@ -46,6 +46,6 @@ class HeaderContent extends Component {
 HeaderContent.propTypes = {
   search: PropTypes.bool.isRequired,
   toggleSearch: PropTypes.func.isRequired
-}
+};
 
 export default HeaderContent;
