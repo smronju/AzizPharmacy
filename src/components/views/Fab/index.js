@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Fab, Button, Icon } from 'native-base';
 
 class FabActions extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super ();
 
     this.state = {
       active: false

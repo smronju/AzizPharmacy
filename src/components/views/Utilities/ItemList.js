@@ -2,21 +2,10 @@ import React from 'react';
 import styles from '../../../assets/styles';
 import { ListItem, Body, Right, Text, Icon } from 'native-base';
 
-const ItemList = ({ medicine }) => {
-  handlePress = (name) => {
-    alert(name);
-  }
-
-  handleLongPress = (status) => {
-    if (status == 1) {
-      alert('Medicine is in stock!');
-    } else {
-      alert('Medicine not in stock!');
-    }
-  }
+const ItemList = ({ medicine, handlePress, handleLongPress }) => {
 
   return (
-    <ListItem onPress={ () => this.handlePress(medicine.get('name')) } onLongPress={ () => this.handleLongPress(medicine.get('status')) }>
+    <ListItem onPress={ () => handlePress(medicine.get('name')) } onLongPress={ () => handleLongPress(medicine.get('status')) }>
       <Body>
         <Text>{medicine.get('name')}</Text>
         <Text note>{medicine.get('description')}</Text>
@@ -26,6 +15,6 @@ const ItemList = ({ medicine }) => {
       </Right>
     </ListItem>
   );
-}
+};
 
 export default ItemList;

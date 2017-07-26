@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ItemList from '../Utilities/ItemList';
 import { List } from 'native-base';
 
 class InStock extends Component {
-  renderRow (stock) {
-    return <ItemList medicine={stock} />
-  }
+  render () {
+    const { handlePress, handleLongPress } = this.props;
 
-  render() {
-    return <List dataArray={this.props.stock} renderRow={this.renderRow}></List>
+    return (
+      <List
+        dataArray={ this.props.stock }
+        renderRow={ (stock) => <ItemList medicine={ stock } handlePress={ handlePress } handleLongPress={ handleLongPress } /> }>
+      </List>
+    );
   }
+}
+
+InStock.propTypes = {
+  stock: PropTypes.array.isRequired
 }
 
 export default InStock;

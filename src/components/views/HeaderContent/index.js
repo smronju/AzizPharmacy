@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { Header, Right, Body, Button, Title, Input, Item, Text, Icon } from 'native-base';
 
@@ -15,7 +16,7 @@ class HeaderContent extends Component {
           <Item>
             <Icon name="search" />
             <Input placeholder="Search" />
-            <Button transparent onPress={this.handleTap}><Icon name="close" /></Button>
+            <Button transparent onPress={ this.handleTap }><Icon name="close" /></Button>
           </Item>
           <Button transparent>
             <Text>Search</Text>
@@ -33,13 +34,18 @@ class HeaderContent extends Component {
         </Body>
 
         <Right>
-          <Button transparent onPress={this.handleTap}  >
+          <Button transparent onPress={ this.handleTap }  >
             <Icon name="search" />
           </Button>
         </Right>
       </Header>
     );
   }
+}
+
+HeaderContent.propTypes = {
+  search: PropTypes.bool.isRequired,
+  toggleSearch: PropTypes.func.isRequired
 }
 
 export default HeaderContent;

@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ItemList from '../Utilities/ItemList';
 import { List } from 'native-base';
 
 class MedicineList extends Component {
-  renderRow (medicine) {
-    return <ItemList medicine={medicine} />
-  }
+  render () {
+    const { handlePress, handleLongPress } = this.props;
 
-  render() {
     return (
-      <List dataArray={this.props.medicines} renderRow={this.renderRow}></List>
+      <List
+        dataArray={ this.props.medicines }
+        renderRow={ (medicine) => <ItemList medicine={medicine} handlePress={ handlePress } handleLongPress={ handleLongPress } /> }>
+      </List>
     );
   }
+}
+
+MedicineList.propTypes = {
+  medicines: PropTypes.array.isRequired
 }
 
 export default MedicineList;

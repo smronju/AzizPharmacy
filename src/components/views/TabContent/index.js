@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from '../../../assets/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MedicineList from '../MedicineList';
@@ -7,6 +8,18 @@ import OutOfStock from '../OutOfStock';
 import { Container, Header, Tabs, Tab, Text } from 'native-base';
 
 class TabContent extends Component {
+  handlePress = (name) => {
+    alert(name);
+  }
+
+  handleLongPress = (status) => {
+    if (status == 1) {
+      alert('Medicine is in stock!');
+    } else {
+      alert('Medicine not in stock!');
+    }
+  }
+
   handleClick = () => {
     let data = {
       id: 6,
@@ -22,21 +35,27 @@ class TabContent extends Component {
 
   render () {
     return (
-      <Tabs initialPage={0}>
+      <Tabs initialPage={ 0 }>
         <Tab heading="Medicine List">
-          <MedicineList medicines={this.props.medicines} />
+          <MedicineList medicines={ this.props.medicines } handlePress={ this.handlePress } handleLongPress={ this.handleLongPress } />
         </Tab>
 
         <Tab heading="In Stock">
-          <InStock stock={this.props.stock} />
+          <InStock stock={ this.props.stock } handlePress={ this.handlePress } handleLongPress={ this.handleLongPress } />
         </Tab>
 
         <Tab heading="Out of Stock">
-          <OutOfStock outOfStock={this.props.outOfStock} />
+          <OutOfStock outOfStock={ this.props.outOfStock } handlePress={ this.handlePress } handleLongPress={ this.handleLongPress } />
         </Tab>
       </Tabs>
     );
   };
 }
+
+TabContent.propTypes = {
+  medicines: PropTypes.array.isRequired,
+  stock: PropTypes.array.isRequired,
+  outOfStock: PropTypes.array.isRequired
+};
 
 export default TabContent;
