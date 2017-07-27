@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { Tabs, Tab } from 'native-base';
 import MedicineList from '../MedicineList';
 import InStock from '../InStock';
 import OutOfStock from '../OutOfStock';
+import MedicineDetails from '../Utilities/MedicineDetails';
 
 class TabContent extends Component {
-  handlePress = (name) => {
-    alert(name);
+  toggleModal = () => {
+    this.props.toggleModal();
+  }
+
+  handlePress = (medicine) => {
+    this.props.setModalContent(medicine);
+    this.toggleModal();
   }
 
   handleLongPress = (status) => {
@@ -32,20 +39,25 @@ class TabContent extends Component {
   }
 
   render () {
+    const { medicines, stock, outOfStock, modalFlag, modalContent } = this.props;
     return (
-      <Tabs initialPage={0}>
-        <Tab heading="Medicine List">
-          <MedicineList medicines={this.props.medicines} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />
-        </Tab>
+      <View>
+        <Tabs initialPage={0}>
+          <Tab heading="Medicine List">
+            <MedicineList medicines={medicines} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />
+          </Tab>
 
-        <Tab heading="In Stock">
-          <InStock stock={this.props.stock} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />
-        </Tab>
+          <Tab heading="In Stock">
+            <InStock stock={stock} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />
+          </Tab>
 
-        <Tab heading="Out of Stock">
-          <OutOfStock outOfStock={this.props.outOfStock} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />
-        </Tab>
-      </Tabs>
+          <Tab heading="Out of Stock">
+            <OutOfStock outOfStock={outOfStock} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />
+          </Tab>
+        </Tabs>
+
+        { (modalContent.size > 0) ? <MedicineDetails medicine={modalContent} isVisible={modalFlag} toggleModal={this.toggleModal} /> : null }
+      </View>
     );
   }
 }
@@ -54,7 +66,11 @@ TabContent.propTypes = {
   medicines: PropTypes.array.isRequired,
   stock: PropTypes.array.isRequired,
   outOfStock: PropTypes.array.isRequired,
-  testDispatch: PropTypes.func.isRequired
+  testDispatch: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  modalFlag: PropTypes.bool.isRequired,
+  modalContent: PropTypes.object.isRequired,
+  setModalContent: PropTypes.func.isRequired
 };
 
 export default TabContent;

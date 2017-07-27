@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 import * as type from '../constants/ActionTypes';
 import { testAction } from './lib/AzizPharmacy';
 import { toggleSearch } from './lib/Search';
+import { toggleModal, setModalContent } from './lib/Modal';
 
 const initialState = fromJS ({
   medicines: {
@@ -34,7 +35,7 @@ const initialState = fromJS ({
       { id: 9, name: 'Medicine name - 9', company: 'Compnay name - 9', description: 'Medicine description - 9', status: 1 },
       { id: 10, name: 'Medicine name - 10', company: 'Compnay name - 10', description: 'Medicine description - 10', status: 1 }
     ],
-    outOfStock:[
+    outOfStock: [
       { id: 11, name: 'Medicine name - 11', company: 'Compnay name - 11', description: 'Medicine description - 11', status: 0 },
       { id: 12, name: 'Medicine name - 12', company: 'Compnay name - 12', description: 'Medicine description - 12', status: 0 },
       { id: 13, name: 'Medicine name - 13', company: 'Compnay name - 13', description: 'Medicine description - 13', status: 0 },
@@ -46,6 +47,10 @@ const initialState = fromJS ({
       text: '',
       medicines: []
     },
+    modal: {
+      flag: false,
+      content: []
+    }
   }
 });
 
@@ -55,6 +60,10 @@ export function AzizPharmacy (state = initialState, action) {
       return testAction(state, action);
     case type.TOGGLE_SEARCH:
       return toggleSearch(state);
+    case type.TOGGLE_MODAL:
+      return toggleModal(state);
+    case type.SET_MODAL_CONTENT:
+      return setModalContent(state, action);
     default:
       return state;
   }
