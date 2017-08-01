@@ -10,12 +10,14 @@ class HeaderContent extends Component {
   }
 
   render () {
-    if (this.props.search) {
+    const { search, setSearchText } = this.props;
+
+    if (search) {
       return (
         <Header searchBar rounded>
           <Item>
             <Icon name="search" />
-            <Input placeholder="Search" />
+            <Input placeholder="Type medicine name" onChangeText={(text) => setSearchText(text)} />
             <Button transparent onPress={this.handleTap}><Icon name="close" /></Button>
           </Item>
           <Button transparent>
@@ -45,7 +47,8 @@ class HeaderContent extends Component {
 
 HeaderContent.propTypes = {
   search: PropTypes.bool.isRequired,
-  toggleSearch: PropTypes.func.isRequired
+  toggleSearch: PropTypes.func.isRequired,
+  setSearchText: PropTypes.func.isRequired
 };
 
 export default HeaderContent;

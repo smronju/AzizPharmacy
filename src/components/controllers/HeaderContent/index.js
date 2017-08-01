@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import HeaderContent from '../../views/HeaderContent';
-import { toggleSearch } from '../../../actions';
+import { toggleSearch, setSearchText } from '../../../actions';
 
 const mapStateAsProps = (state) => {
   return {
@@ -12,6 +12,9 @@ const mapDispatcherAsProps = (dispatch) => {
   return {
     toggleSearch () {
       dispatch(toggleSearch());
+    },
+    setSearchText (text) {
+      dispatch(setSearchText(text));
     }
   };
 };

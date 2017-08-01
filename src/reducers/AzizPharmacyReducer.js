@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import * as type from '../constants/ActionTypes';
 import { testAction } from './lib/AzizPharmacy';
-import { toggleSearch } from './lib/Search';
+import { toggleSearch, setSearchText } from './lib/Search';
 import { toggleModal, setModalContent } from './lib/Modal';
 
 const initialState = fromJS ({
@@ -60,6 +60,8 @@ export default function AzizPharmacy (state = initialState, action) {
       return testAction(state, action);
     case type.TOGGLE_SEARCH:
       return toggleSearch(state);
+    case type.SET_SEARCH_TEXT:
+      return setSearchText(state, action);
     case type.TOGGLE_MODAL:
       return toggleModal(state);
     case type.SET_MODAL_CONTENT:
