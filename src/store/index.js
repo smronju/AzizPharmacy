@@ -1,11 +1,11 @@
 /* ==========================================
 |       ▀▄▀▄▀▄ ѕмяσиנυ ωαѕ нєяє ▄▀▄▀▄▀      |
-* ==========================================*/
+* ========================================== */
 
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import Reducers from '../reducers';
 import Thunk from 'redux-thunk';
+import Reducers from '../reducers';
 
 const middleware = [Thunk];
 

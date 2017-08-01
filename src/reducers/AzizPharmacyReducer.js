@@ -54,7 +54,7 @@ const initialState = fromJS ({
   }
 });
 
-export function AzizPharmacy (state = initialState, action) {
+export default function AzizPharmacy (state = initialState, action) {
   switch (action.type) {
     case type.TEST_ACTION:
       return testAction(state, action);

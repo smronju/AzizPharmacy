@@ -6,16 +6,10 @@ export function toggleSearch (state) {
   // .setIn(['explorer', 'search', 'flag'], (action.text.length > 0) ? true : false);
 }
 
-// export function saveSearchResult (state, action) {
-//   return state
-//   .setIn(['explorer', 'search', 'files'], fromJS(action.data.files))
-//   .setIn(['explorer', 'search', 'folders'], fromJS(action.data.folders));
-// }
-//
-// export function resetSearch (state) {
-//   return state
-//   .setIn(['explorer', 'search', 'flag'], false)
-//   .setIn(['explorer', 'search', 'text'], '')
-//   .setIn(['explorer', 'search', 'files'], fromJS([]))
-//   .setIn(['explorer', 'search', 'folders'], fromJS([]));
-// }
+export function resetSearch (state) {
+  return state
+    .setIn(['explorer', 'search', 'flag'], false)
+    .setIn(['explorer', 'search', 'text'], '')
+    .setIn(['explorer', 'search', 'files'], fromJS([]))
+    .setIn(['explorer', 'search', 'folders'], fromJS([]));
+}
