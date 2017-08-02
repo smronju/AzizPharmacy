@@ -16,6 +16,10 @@ export function setSearchText (text) {
   return { type: type.SET_SEARCH_TEXT, text};
 }
 
+export function setSearchResult (text) {
+  return { type: type.SET_SEARCH_RESULT, text};
+}
+
 export function toggleModal () {
   return { type: type.TOGGLE_MODAL };
 }

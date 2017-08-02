@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Tabs, Tab } from 'native-base';
+import { Tabs, Tab, List, Text } from 'native-base';
 import MedicineList from '../MedicineList';
 import InStock from '../InStock';
 import OutOfStock from '../OutOfStock';
+import ItemList from '../Utilities/ItemList';
 import MedicineDetails from '../Utilities/MedicineDetails';
 
 class TabContent extends Component {
@@ -39,7 +40,20 @@ class TabContent extends Component {
   }
 
   render () {
-    const { medicines, stock, outOfStock, modalFlag, modalContent } = this.props;
+    const { search, searchResult, medicines, stock, outOfStock, modalFlag, modalContent } = this.props;
+
+    if (search) {
+      return (
+        <View>
+          <Text>{searchResult}</Text>
+          <List
+            dataArray={searchResult}
+            renderRow={searchResult => { return <ItemList medicine={searchResult} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />; }}
+          />
+        </View>
+      );
+    }
+
     return (
       <View>
         <Tabs initialPage={0}>
@@ -62,7 +76,13 @@ class TabContent extends Component {
   }
 }
 
+TabContent.defaultProps ={
+  search: false
+};
+
 TabContent.propTypes = {
+  search: PropTypes.bool,
+  searchResult: PropTypes.array.isRequired,
   medicines: PropTypes.array.isRequired,
   stock: PropTypes.array.isRequired,
   outOfStock: PropTypes.array.isRequired,

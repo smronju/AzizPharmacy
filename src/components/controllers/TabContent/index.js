@@ -4,11 +4,13 @@ import { testAction, toggleModal, setModalContent } from '../../../actions';
 
 const mapStateAsProps = (state) => {
   return {
+    search: state.AzizPharmacy.getIn(['medicines', 'search', 'flag']),
+    searchResult: state.AzizPharmacy.getIn(['medicines', 'search', 'medicines']).toArray(),
     medicines: state.AzizPharmacy.getIn(['medicines', 'all']).toArray(),
-    stock: state.AzizPharmacy.getIn(['medicines', 'inStock']).toArray(),
-    outOfStock: state.AzizPharmacy.getIn(['medicines', 'outOfStock']).toArray(),
-    modalContent: state.AzizPharmacy.getIn(['medicines', 'modal', 'content']),
-    modalFlag: state.AzizPharmacy.getIn(['medicines', 'modal', 'flag'])
+    stock: state.AzizPharmacy.getIn(['medicines', 'all']).filter(medicine => medicine.get('status') == 1).toArray(),
+    outOfStock: state.AzizPharmacy.getIn(['medicines', 'all']).filter(medicine => medicine.get('status') == 0).toArray(),
+    modalFlag: state.AzizPharmacy.getIn(['medicines', 'modal', 'flag']),
+    modalContent: state.AzizPharmacy.getIn(['medicines', 'modal', 'content'])
   };
 };
 

@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+// import { fromJS } from 'immutable';
 
 export function toggleSearch (state) {
   return state
@@ -11,8 +11,7 @@ export function setSearchText (state, action) {
     .setIn(['medicines', 'search', 'text'], action.text);
 }
 
-export function resetSearch (state) {
-  return state
-    .setIn(['medicines', 'search', 'flag'], false)
-    .setIn(['medicines', 'search', 'medicines'], fromJS([]));
+export function setSearchResult (state) {
+  // TODO: filter stocked medicine and show in search.
+  return state;
 }
