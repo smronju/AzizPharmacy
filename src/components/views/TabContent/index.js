@@ -43,13 +43,21 @@ class TabContent extends Component {
     const { search, searchResult, medicines, stock, outOfStock, modalFlag, modalContent } = this.props;
 
     if (search) {
+      if (searchResult.length > 0 ) {
+        return (
+          <View>
+            <Text style={{ paddingTop: 10, paddingBottom: 10, paddingLeft: 25, backgroundColor: '#DD5144', color: 'white'}}>{searchResult.length} found in stock!</Text>
+            <List
+              dataArray={searchResult}
+              renderRow={searchResult => { return <ItemList medicine={searchResult} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />; }}
+            />
+          </View>
+        );
+      }
+
       return (
         <View>
-          <Text>{searchResult}</Text>
-          <List
-            dataArray={searchResult}
-            renderRow={searchResult => { return <ItemList medicine={searchResult} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />; }}
-          />
+          <Text>{searchResult.length} Nothing found!</Text>
         </View>
       );
     }

@@ -11,7 +11,11 @@ export function setSearchText (state, action) {
     .setIn(['medicines', 'search', 'text'], action.text);
 }
 
-export function setSearchResult (state) {
+export function setSearchResult (state, action) {
   // TODO: filter stocked medicine and show in search.
-  return state;
+  // const list = state.getIn(['medicines', 'all']);
+  return state
+    .setIn(['medicines', 'search', 'medicines'], (list) => {
+      return list.get('name') == action.text;
+    });
 }
