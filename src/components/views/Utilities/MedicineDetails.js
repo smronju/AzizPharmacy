@@ -5,8 +5,8 @@ import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'nativ
 
 const MedicineDetails = ({ medicine, isVisible, toggleModal }) => {
   return (
-    <Modal visible={isVisible} onRequestClose={toggleModal}>
-      <Card style={{flex: 0}}>
+    <Modal visible={isVisible} transparent presentationStyle={'fullScreen'} onRequestClose={toggleModal} animationType={'slide'}>
+      <Card>
         <CardItem>
           <Left>
             <Thumbnail source={{uri: 'http://via.placeholder.com/150x150'}} />
@@ -34,7 +34,6 @@ const MedicineDetails = ({ medicine, isVisible, toggleModal }) => {
     </Modal>
   );
 };
-
 
 MedicineDetails.propTypes = {
   medicine: PropTypes.object.isRequired,

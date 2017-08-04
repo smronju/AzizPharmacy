@@ -1,5 +1,3 @@
-// import { fromJS } from 'immutable';
-
 export function toggleSearch (state) {
   return state
     .setIn(['medicines', 'search', 'flag'], !state.getIn(['medicines', 'search', 'flag']))
@@ -12,10 +10,11 @@ export function setSearchText (state, action) {
 }
 
 export function setSearchResult (state, action) {
-  // TODO: filter stocked medicine and show in search.
-  // const list = state.getIn(['medicines', 'all']);
-  return state
-    .setIn(['medicines', 'search', 'medicines'], (list) => {
-      return list.get('name') == action.text;
-    });
+  const regex = new RegExp(action.text, 'i');
+
+  const filtered = state.getIn(['medicines', 'all']).filter(function (medicine) {
+    return (medicine.get('name').search(regex) > -1);
+  });
+
+  return state.setIn(['medicines', 'search', 'medicines'], filtered);
 }
