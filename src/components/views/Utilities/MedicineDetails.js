@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Image } from 'react-native';
+import Modal from 'react-native-modal';
+import { Image } from 'react-native';
 import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import styles from '../../../assets/styles';
 
 const MedicineDetails = ({ medicine, isVisible, toggleModal }) => {
   return (
-    <Modal visible={isVisible} transparent presentationStyle={'fullScreen'} onRequestClose={toggleModal} animationType={'slide'}>
-      <Card>
+    <Modal isVisible={isVisible} onBackButtonPress={toggleModal} animationIn={'flipInY'}>
+      <Card style={styles.modalContent}>
         <CardItem>
           <Left>
             <Thumbnail source={{uri: 'http://via.placeholder.com/150x150'}} />
@@ -16,11 +18,9 @@ const MedicineDetails = ({ medicine, isVisible, toggleModal }) => {
             </Body>
           </Left>
         </CardItem>
-        <CardItem>
-          <Body>
-            <Image source={{uri: 'http://via.placeholder.com/180x180'}} style={{height: 200, width: 200, flex: 1}} />
-            <Text>{medicine.get('description')}</Text>
-          </Body>
+        <CardItem cardBody>
+          <Image source={{uri: 'http://via.placeholder.com/100x100'}} style={{height: 100, flex: 1}} />
+          <Text style={{marginLeft: 10}}>{medicine.get('description')}</Text>
         </CardItem>
         <CardItem>
           <Left>
