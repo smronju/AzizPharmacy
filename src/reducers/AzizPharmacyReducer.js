@@ -31,9 +31,7 @@ const initialState = fromJS ({
     search: {
       flag: false,
       text: '',
-      medicines: [
-        { id: 4, name: 'Medicine name - 4', company: 'Compnay name - 4', description: 'Medicine description - 4', status: 1 }
-      ]
+      medicines: []
     },
     modal: {
       flag: false,
