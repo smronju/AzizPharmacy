@@ -5,16 +5,15 @@ export function toggleSearch (state) {
 }
 
 export function setSearchText (state, action) {
-  return state
-    .setIn(['medicines', 'search', 'text'], action.text);
+  return state.setIn(['medicines', 'search', 'text'], action.text);
 }
 
 export function setSearchResult (state, action) {
   const regex = new RegExp(action.text, 'i');
 
-  const filtered = state.getIn(['medicines', 'all']).filter(function (medicine) {
-    return (medicine.get('name').search(regex) > -1);
-  });
+  const inStock = state.getIn(['medicines', 'all'])
+    .filter(medicine => medicine.get('status') == 1)
+    .filter(medicine => medicine.get('name').search(regex) > -1);
 
-  return state.setIn(['medicines', 'search', 'medicines'], filtered);
+  return state.setIn(['medicines', 'search', 'medicines'], inStock);
 }

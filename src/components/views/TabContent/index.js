@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { Tabs, Tab, List, Text } from 'native-base';
+import styles from '../../../assets/styles';
 import MedicineList from '../MedicineList';
 import InStock from '../InStock';
 import OutOfStock from '../OutOfStock';
@@ -42,22 +43,14 @@ class TabContent extends Component {
   render () {
     const { search, searchResult, medicines, stock, outOfStock, modalFlag, modalContent } = this.props;
 
-    if (search) {
-      if (searchResult.length > 0 ) {
-        return (
-          <View>
-            <Text style={{ paddingTop: 10, paddingBottom: 10, paddingLeft: 25, backgroundColor: '#DD5144', color: 'white'}}>{searchResult.length} found in stock!</Text>
-            <List
-              dataArray={searchResult}
-              renderRow={searchResult => { return <ItemList medicine={searchResult} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />; }}
-            />
-          </View>
-        );
-      }
-
+    if (search && searchResult.length > 0) {
       return (
         <View>
-          <Text>{searchResult.length} Nothing found!</Text>
+          <Text style={styles.searchHeader}>{searchResult.length} found in stock!</Text>
+          <List
+            dataArray={searchResult}
+            renderRow={searchResult => { return <ItemList medicine={searchResult} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />; }}
+          />
         </View>
       );
     }
