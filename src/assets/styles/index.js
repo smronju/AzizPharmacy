@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   modalContent: {
     flex: 0,
-    backgroundColor: 'white',
+    backgroundColor: '#ffffff',
     justifyContent: 'center',
     alignItems: 'stretch'
   },
@@ -11,8 +11,8 @@ export default StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 25,
-    backgroundColor: '#DD5144',
-    color: 'white'
+    backgroundColor: '#0D47A1',
+    color: '#ffffff'
   },
   emptySearch: {
     flex: 1,
