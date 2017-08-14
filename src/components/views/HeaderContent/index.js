@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Header, Right, Body, Button, Title, Input, Item, Text, Icon } from 'native-base';
 
 class HeaderContent extends Component {
-
   handleTap = () => {
     this.props.toggleSearch();
   }
@@ -17,7 +16,7 @@ class HeaderContent extends Component {
         <Header searchBar rounded>
           <Item>
             <Icon name="search" />
-            <Input placeholder="Type medicine name" onChangeText={(text) => setSearchText(text)} />
+            <Input onChangeText={(text) => setSearchText(text)} autoFocus placeholder="Type medicine name" />
             <Button transparent onPress={this.handleTap}><Icon name="close" /></Button>
           </Item>
           <Button transparent>
