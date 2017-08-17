@@ -17,6 +17,11 @@ export default StyleSheet.create({
   emptySearch: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-start'
+  },
+  emptySearchText: {
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 });

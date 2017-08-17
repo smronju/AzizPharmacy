@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Tabs, Tab, List, Text } from 'native-base';
+import { Container, Tabs, Tab, List, Text } from 'native-base';
 import styles from '../../../assets/styles';
 import MedicineList from '../MedicineList';
 import InStock from '../InStock';
@@ -57,15 +57,17 @@ class TabContent extends Component {
       }
 
       return (
-        <View>
-          <Text style={styles.searchHeader}>Noting found in stock!</Text>
-        </View>
+        <Container>
+          <View style={styles.emptySearch}>
+            <Text style={styles.emptySearchText}>Type medicine name to search!</Text>
+          </View>
+        </Container>
       );
     }
 
     return (
       <View>
-        <Tabs initialPage={0}>
+        <Tabs initialPage={0} tabBarPosition={'top'}>
           <Tab heading="Medicine List">
             <MedicineList medicines={medicines} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />
           </Tab>

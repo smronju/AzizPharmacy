@@ -1,7 +1,10 @@
+import { fromJS } from 'immutable';
+
 export function toggleSearch (state) {
   return state
     .setIn(['medicines', 'search', 'flag'], !state.getIn(['medicines', 'search', 'flag']))
-    .setIn(['medicines', 'search', 'text'], '');
+    .setIn(['medicines', 'search', 'text'], '')
+    .setIn(['medicines', 'search', 'medicines'], fromJS([]));
 }
 
 export function setSearchText (state, action) {
