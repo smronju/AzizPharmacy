@@ -52,6 +52,8 @@ class TabContent extends Component {
               dataArray={searchResult}
               renderRow={searchResult => { return <ItemList medicine={searchResult} handlePress={this.handlePress} handleLongPress={this.handleLongPress} />; }}
             />
+
+            { (modalContent.size > 0) ? <MedicineDetails medicine={modalContent} isVisible={modalFlag} toggleModal={this.toggleModal} /> : null }
           </View>
         );
       }
