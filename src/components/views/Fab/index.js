@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Fab, Button, Icon } from 'native-base';
+import { Fab, Icon } from 'native-base';
 
 class FabActions extends Component {
   constructor () {
     super ();
 
     this.state = {
-      active: false
+      active: true
     };
   }
 
@@ -15,24 +15,12 @@ class FabActions extends Component {
       <Fab
         active={this.state.active}
         direction="up"
-        containerStyle={{ }}
+        containerStyle={{}}
         style={{ backgroundColor: '#5067FF' }}
         position="bottomRight"
         onPress={() => { this.setState({ active: !this.state.active }); }}
       >
-        <Icon name="add" />
-
-        <Button style={{ backgroundColor: '#34A34F' }}>
-          <Icon name="logo-whatsapp" />
-        </Button>
-
-        <Button style={{ backgroundColor: '#3B5998' }}>
-          <Icon name="logo-facebook" />
-        </Button>
-
-        <Button disabled style={{ backgroundColor: '#DD5144' }}>
-          <Icon name="mail" />
-        </Button>
+        <Icon name="add" onPress={() => alert('New medicine form will open here :)')} />
       </Fab>
     );
   }
