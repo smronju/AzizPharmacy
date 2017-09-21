@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import { Header, Right, Body, Button, Title, Input, Item, Text, Icon } from 'native-base';
 
 class HeaderContent extends Component {
